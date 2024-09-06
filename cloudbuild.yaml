@@ -12,6 +12,12 @@ steps:
       - --filename=deployment.yaml
       - --location=us-central1
       - --cluster=autopilot-cluster-1
+  # configure the loadbalancer service to explose the app on port 80
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - apply
+      - -f service-loadbalancer.yaml
+
 
 images:
   - 'gcr.io/cloud-run-gde-experiments/my-devops-app-gke:latest'
